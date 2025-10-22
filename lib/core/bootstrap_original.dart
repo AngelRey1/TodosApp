@@ -1,8 +1,11 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:local_storage_todos_api/local_storage_todos_api.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:todos_repository/todos_repository.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -25,9 +28,23 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
 
+  // Ensure the Flutter bindings are initialized before calling
+  // platform channels or plugins (e.g. SharedPreferences).
+  WidgetsFlutterBinding.ensureInitialized();
+
   Bloc.observer = const AppBlocObserver();
 
   // Add cross-flavor configuration here
 
-  runApp(await builder());
+  // Initialize local storage and repository
+  final prefs = await SharedPreferences.getInstance();
+  final localApi = LocalStorageTodosApi(plugin: prefs);
+  final repository = TodosRepository(todosApi: localApi);
+
+  runApp(
+    RepositoryProvider<TodosRepository>.value(
+      value: repository,
+      child: await builder(),
+    ),
+  );
 }
