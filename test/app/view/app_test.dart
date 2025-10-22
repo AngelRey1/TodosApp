@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:javerage_todos/app/app.dart';
-import 'package:javerage_todos/features/todos_overview/presentation/todos_overview_page.dart';
+import 'package:javerage_todos/features/home/home.dart';
 import 'package:todos_repository/todos_repository.dart';
 
 class _FakeTodosRepository implements TodosRepository {
@@ -35,7 +35,7 @@ class _FakeTodosRepository implements TodosRepository {
 
 void main() {
   group('App', () {
-    testWidgets('renders TodosOverviewPage', (tester) async {
+    testWidgets('renders HomePage', (tester) async {
       await tester.pumpWidget(
         RepositoryProvider<TodosRepository>(
           create: (_) => _FakeTodosRepository(),
@@ -43,7 +43,7 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      expect(find.byType(TodosOverviewPage), findsOneWidget);
+      expect(find.byType(HomePage), findsOneWidget);
     });
   });
 }

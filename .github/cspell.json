@@ -16,7 +16,8 @@
   ],
   "useGitignore": true,
   "ignorePaths": [
-    "informe_mision_AI.md"
+    "**/informe_mision_AI.md",
+    "informe_*.md"
   ],
   "words": [
     "arbol",
