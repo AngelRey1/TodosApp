@@ -48,7 +48,7 @@ class TodosOverviewBloc extends Bloc<TodosOverviewEvent, TodosOverviewState> {
 
   @override
   Future<void> close() {
-    _todosSubscription?.cancel();
+    unawaited(_todosSubscription?.cancel());
     return super.close();
   }
 }

@@ -122,8 +122,8 @@ class TodosOverviewView extends StatelessWidget {
                       );
                     },
                     onTap: () {
-                      // We intentionally don't await navigation here; handle any
-                      // follow-up when the pushed route completes elsewhere.
+                      // We intentionally don't await navigation here;
+                      // handle follow-up when the route completes.
                       // Use unawaited to make our intent explicit.
                       // ignore: discarded_futures
                       Navigator.of(context).push(
@@ -141,6 +141,7 @@ class TodosOverviewView extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          // Navigation fire-and-forget is intentional here
           // ignore: discarded_futures
           Navigator.of(context).push(EditTodoPage.route());
         },

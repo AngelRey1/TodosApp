@@ -15,6 +15,9 @@
     }
   ],
   "useGitignore": true,
+  "ignorePaths": [
+    "informe_mision_AI.md"
+  ],
   "words": [
     "arbol",
     "automáticamente",
