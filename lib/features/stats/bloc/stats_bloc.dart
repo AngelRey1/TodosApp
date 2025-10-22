@@ -6,8 +6,8 @@ import 'package:todos_repository/todos_repository.dart';
 class StatsBloc extends Bloc<StatsEvent, StatsState> {
   StatsBloc({
     required TodosRepository todosRepository,
-  })  : _todosRepository = todosRepository,
-        super(const StatsState()) {
+  }) : _todosRepository = todosRepository,
+       super(const StatsState()) {
     on<StatsSubscriptionRequested>(_onSubscriptionRequested);
   }
 
@@ -23,12 +23,10 @@ class StatsBloc extends Bloc<StatsEvent, StatsState> {
       _todosRepository.getTodos(),
       onData: (todos) => state.copyWith(
         status: StatsStatus.success,
-        completedTodos:
-            todos.where((todo) => todo.isCompleted).length,
-        activeTodos:
-            todos.where((todo) => !todo.isCompleted).length,
+        completedTodos: todos.where((todo) => todo.isCompleted).length,
+        activeTodos: todos.where((todo) => !todo.isCompleted).length,
       ),
-  onError: (_, _) => state.copyWith(status: StatsStatus.failure),
+      onError: (_, _) => state.copyWith(status: StatsStatus.failure),
     );
   }
 }

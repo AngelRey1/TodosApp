@@ -42,18 +42,20 @@ class EditTodoView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  // code may not be available in some environments. These can be
-  // replaced with `context.l10n.*` once generation is present.
-  // final l10n = context.l10n;
+    // code may not be available in some environments. These can be
+    // replaced with `context.l10n.*` once generation is present.
+    // final l10n = context.l10n;
     final status = context.select((EditTodoBloc bloc) => bloc.state.status);
-    final isNewTodo = context.select((EditTodoBloc bloc) => bloc.state.isNewTodo);
+    final isNewTodo = context.select(
+      (EditTodoBloc bloc) => bloc.state.isNewTodo,
+    );
 
     return Scaffold(
       appBar: AppBar(
         title: Text(isNewTodo ? 'Add Todo' : 'Edit Todo'),
       ),
       floatingActionButton: FloatingActionButton(
-  tooltip: 'Save changes',
+        tooltip: 'Save changes',
         shape: const ContinuousRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(32)),
         ),
@@ -83,7 +85,7 @@ class _TitleField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  final state = context.watch<EditTodoBloc>().state;
+    final state = context.watch<EditTodoBloc>().state;
     final hintText = state.initialTodo?.title ?? '';
 
     return TextFormField(
@@ -91,7 +93,7 @@ class _TitleField extends StatelessWidget {
       initialValue: state.title,
       decoration: InputDecoration(
         enabled: !state.status.isLoadingOrSuccess,
-  labelText: 'Title',
+        labelText: 'Title',
         hintText: hintText,
       ),
       maxLength: 50,
@@ -111,7 +113,7 @@ class _DescriptionField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  final state = context.watch<EditTodoBloc>().state;
+    final state = context.watch<EditTodoBloc>().state;
     final hintText = state.initialTodo?.description ?? '';
 
     return TextFormField(
@@ -119,7 +121,7 @@ class _DescriptionField extends StatelessWidget {
       initialValue: state.description,
       decoration: InputDecoration(
         enabled: !state.status.isLoadingOrSuccess,
-  labelText: 'Description',
+        labelText: 'Description',
         hintText: hintText,
       ),
       maxLength: 300,

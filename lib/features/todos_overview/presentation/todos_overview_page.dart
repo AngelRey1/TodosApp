@@ -40,8 +40,7 @@ class _TodosOverviewView extends StatelessWidget {
               }
               return ListView.separated(
                 itemCount: todos.length,
-                separatorBuilder: (_, _) =>
-                    const Divider(height: 1),
+                separatorBuilder: (_, _) => const Divider(height: 1),
                 itemBuilder: (context, index) {
                   final todo = todos[index];
                   return ListTile(

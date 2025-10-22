@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:javerage_todos/features/todos_overview/bloc/todos_overview_bloc.dart';
- 
 
 @visibleForTesting
 enum TodosOverviewOption { toggleAll, clearCompleted }
@@ -11,9 +10,9 @@ class TodosOverviewOptionsButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  // final l10n = context.l10n;
+    // final l10n = context.l10n;
 
-  final todos = context.select((TodosOverviewBloc bloc) => bloc.state.todos);
+    final todos = context.select((TodosOverviewBloc bloc) => bloc.state.todos);
     final hasTodos = todos.isNotEmpty;
     final completedTodosAmount = todos.where((todo) => todo.isCompleted).length;
 
@@ -21,7 +20,7 @@ class TodosOverviewOptionsButton extends StatelessWidget {
       shape: const ContinuousRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
-  tooltip: 'Options',
+      tooltip: 'Options',
       onSelected: (options) {
         switch (options) {
           case TodosOverviewOption.toggleAll:
@@ -39,7 +38,7 @@ class TodosOverviewOptionsButton extends StatelessWidget {
           PopupMenuItem(
             value: TodosOverviewOption.toggleAll,
             enabled: hasTodos,
-              child: Text(
+            child: Text(
               completedTodosAmount == todos.length
                   ? 'Mark all as incomplete'
                   : 'Mark all as completed',

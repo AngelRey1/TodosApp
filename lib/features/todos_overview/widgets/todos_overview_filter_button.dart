@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:javerage_todos/features/todos_overview/bloc/todos_overview_bloc.dart';
 import 'package:javerage_todos/features/todos_overview/models/todos_view_filter.dart';
- 
+
 class TodosOverviewFilterButton extends StatelessWidget {
   const TodosOverviewFilterButton({super.key});
 

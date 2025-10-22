@@ -35,9 +35,9 @@ class TodosOverviewState extends Equatable {
 
   @override
   List<Object?> get props => [
-        status,
-        todos,
-        filter,
-        lastDeletedTodo,
-      ];
+    status,
+    todos,
+    filter,
+    lastDeletedTodo,
+  ];
 }

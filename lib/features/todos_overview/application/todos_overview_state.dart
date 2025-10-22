@@ -9,7 +9,7 @@ class TodosOverviewState extends Equatable {
   });
 
   const TodosOverviewState.initial()
-      : this._(status: TodosOverviewStatus.initial, todos: const []);
+    : this._(status: TodosOverviewStatus.initial, todos: const []);
 
   final TodosOverviewStatus status;
   final List<Todo> todos;
