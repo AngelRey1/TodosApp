@@ -21,7 +21,7 @@ dependencies:
   flutter_bloc: ^9.1.1
   intl: ^0.20.2
   json_annotation: ^4.9.0
-  json_serializable: ^6.11.1
+  json_serializable: ^6.11.2
   meta: ^1.16.0
   shared_preferences: ^2.5.3
   uuid: ^4.5.1
